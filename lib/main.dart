@@ -247,40 +247,43 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 20, 20, 20),
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                           child: SizedBox(
                             height: height / 1000 * 210,
                             width: width / 1920 * 300,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                              textBaseline: TextBaseline.alphabetic,
-                              children: <Widget>[
-                                Row(
-                                  children: [
-                                    Icon(Icons.horizontal_rule_outlined, color: customColors[0]),
-                                    Text("Сеть", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.horizontal_rule_outlined, color: customColors[1]),
-                                    Text("Накопители", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.horizontal_rule_outlined, color: customColors[2]),
-                                    Text("Электрокотельная", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(Icons.horizontal_rule_outlined, color: customColors[3]),
-                                    Text("Водород", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
-                                  ],
-                                ),
-                              ],
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.baseline,
+                                textBaseline: TextBaseline.alphabetic,
+                                children: <Widget>[
+                                  Row(
+                                    children: [
+                                      Icon(Icons.horizontal_rule_outlined, color: customColors[0]),
+                                      Text("Сеть", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.horizontal_rule_outlined, color: customColors[1]),
+                                      Text("Накопители", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.horizontal_rule_outlined, color: customColors[2]),
+                                      Text("Электрокотельная", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.horizontal_rule_outlined, color: customColors[3]),
+                                      Text("Водород", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -560,7 +563,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.grid,
-                                        name: 'Grid',
+                                        name: 'Сеть',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -569,7 +572,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.diesel,
-                                        name: 'Diesel',
+                                        name: 'Дизель-генераторы',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -578,7 +581,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.wind,
-                                        name: 'Wind',
+                                        name: 'Ветрогенераторы',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -587,7 +590,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.ess,
-                                        name: 'ESS',
+                                        name: 'СНЭ',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -596,7 +599,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.hydrogen,
-                                        name: 'Hydrogen',
+                                        name: 'Водород',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -605,7 +608,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.thermal,
-                                        name: 'Thermal',
+                                        name: 'Теплонакопитель',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
