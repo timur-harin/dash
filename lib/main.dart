@@ -1,5 +1,4 @@
 import 'dart:core';
-import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -49,16 +48,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   late List<TableData> _chartData;
   late TooltipBehavior _tooltipBehavior;
 
-  late AnimationController _controller;
-  late Animation<double> _animation;
   double _opacity = 1;
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
 
   @override
   void initState() {
