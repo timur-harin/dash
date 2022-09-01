@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
@@ -23,13 +24,13 @@ class DashBoardApp extends StatelessWidget {
     return MaterialApp(
       theme: commonTheme(),
       debugShowCheckedModeBanner: false,
-      home: MainPage(title: 'Цифровая модель управления энергетической гибкостью'),
+      home: const MainPage(title: 'Цифровая модель управления энергетической гибкостью'),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  MainPage({super.key, required this.title});
+  const MainPage({super.key, required this.title});
 
   final String title;
 
@@ -37,7 +38,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
+class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin {
   late List<int> items = [0, 1, 2, 3];
   double heightAppBar = 80;
   double _value = 100.0;
@@ -47,6 +48,17 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   late List<TableData> _chartData;
   late TooltipBehavior _tooltipBehavior;
+
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  double _opacity = 1;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
 
   @override
   void initState() {
@@ -81,31 +93,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       final String newTitle = confNames.removeAt(oldIndex);
       confNames.insert(newIndex, newTitle);
 
-      print(items);
     });
   }
 
-  void reinit() {
+  void reInit() {
     items = [0, 1, 2, 3];
     configuration = [electroConfiguration, storageConfiguration, boilerConfiguration, hydrogenConfiguration];
     menuColors = [greyMenu, blueMenu, orangeMenu, azureMenu];
     confNames = [confElectro, confBattery, confBoiled, congHydro];
   }
-
-  // late final AnimationController _controller = AnimationController(
-  //   duration: const Duration(seconds: 2),
-  //   vsync: this,
-  // )..repeat(reverse: true);
-  // late final Animation<double> _animation = CurvedAnimation(
-  //   parent: _controller,
-  //   curve: Curves.easeIn,
-  // );
-  //
-  // @override
-  // void dispose() {
-  //   _controller.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -172,10 +168,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                   width: width / 1920 * 370,
                                   child: ElevatedButton(
                                     onPressed: () {
-                                      reinit();
-                                      reorder(0, 4);
-                                      reorder(0, 2);
-                                      // initTableData(); //TODO change init function
+                                      setState(() { _opacity = 0; });
+                                      Future.delayed(const Duration(seconds: 1),() =>
+                                          setState(() {
+                                            reInit();
+                                            reorder(0, 4);
+                                            reorder(0, 2);
+                                            _opacity = 1;
+                                          }
+                                          ));
                                     },
                                     style: commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => yellowButton)),
                                     child: Text("Экономичность", style: Theme.of(context).textTheme.headline4),
@@ -189,8 +190,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                     width: width / 1920 * 370,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          reinit();
-                                          reorder(0, 4);
+                                          setState(() { _opacity = 0; });
+                                          Future.delayed(const Duration(seconds: 1),() =>
+                                              setState(() {
+                                                reInit();
+                                                reorder(0, 4);
+                                                _opacity=1;
+                                              }
+                                              ));
                                         },
                                         style: commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => blueButton)),
                                         child: Text("Надежность", style: Theme.of(context).textTheme.headline4))),
@@ -202,10 +209,17 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                     width: width / 1920 * 370,
                                     child: ElevatedButton(
                                         onPressed: () {
-                                          reinit();
-                                          reorder(0, 4);
-                                          reorder(1, 3);
-                                          reorder(0, 2);
+                                          setState(() { _opacity = 0; });
+                                          Future.delayed(const Duration(seconds: 1),() =>
+                                              setState(() {
+                                                reInit();
+                                                reorder(0, 4);
+                                                reorder(1, 3);
+                                                reorder(0, 2);
+                                                _opacity = 1;
+                                              }
+                                              ));
+
                                         },
                                         style:
                                             commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => greenButton)),
@@ -258,28 +272,29 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.baseline,
                                 textBaseline: TextBaseline.alphabetic,
                                 children: <Widget>[
+                                  const Icon(Icons.horizontal_rule_outlined, color: Color.fromRGBO(0, 0, 0, 0)),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[0]),
-                                      Text("Сеть", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                      Flexible(child: Text("Строительство сети", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[1]),
-                                      Text("Накопители", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                      Flexible(child: Text("Установка литий-ионного накопителя", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[2]),
-                                      Text("Электрокотельная", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                      Flexible(child: Text("Переход на электроотопление", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[3]),
-                                      Text("Водород", style: Theme.of(context).textTheme.bodyText1, textAlign: TextAlign.left),
+                                      Flexible(child: Text("Установка водородного накопителя", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                 ],
@@ -297,9 +312,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           SizedBox(
             height: height * 0.71,
             width: width,
-            // child: FadeTransition(
-            //   opacity: _animation,
-            child: ReorderableListView(
+              child: AnimatedOpacity(
+                opacity: _opacity,
+                duration: const Duration(seconds: 1),
+
+                child: ReorderableListView(
                 onReorder: (int oldIndex, int newIndex) {
                   setState(() {
                     if (oldIndex < newIndex) {
@@ -317,7 +334,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                     final String newTitle = confNames.removeAt(oldIndex);
                     confNames.insert(newIndex, newTitle);
 
-                    print(items);
                   });
                 },
                 children: <Widget>[
@@ -590,7 +606,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                                         dataSource: _chartData,
                                         xValueMapper: (TableData exp, _) => exp.time,
                                         yValueMapper: (TableData exp, _) => exp.ess,
-                                        name: 'СНЭ',
+                                        name: 'Накопитель',
                                         // markerSettings: MarkerSettings(
                                         //   isVisible: true,
                                         // )
@@ -624,6 +640,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 ]),
             // )
           )
-        ])));
+          )])));
   }
 }

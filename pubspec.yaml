@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^1.1.4
   syncfusion_flutter_charts: ^20.2.46
   flutter_launcher_icons: ^0.10.0
+  animate_do: ^2.1.0
 
 
 dev_dependencies:

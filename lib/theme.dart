@@ -16,7 +16,7 @@ ThemeData commonTheme() => ThemeData(
       // minimumSize: MaterialStateProperty.resolveWith<Size>(
       //     (states) => Size(WidgetsBinding.instance.window.physicalSize.width * 0.02, WidgetsBinding.instance.window.physicalSize.height * 0.02)),
       backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.white),
-      side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black12)),
+      side: MaterialStateProperty.resolveWith<BorderSide>((states) => const BorderSide(color: Colors.black12)),
       shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
         return RoundedRectangleBorder(borderRadius: BorderRadius.circular(5));
       }),
@@ -36,7 +36,7 @@ ThemeData commonTheme() => ThemeData(
       style: ButtonStyle(
         // minimumSize: MaterialStateProperty.resolveWith<Size>(
         //     (states) => Size((WidgetsBinding.instance.window.physicalSize.width/1920)*370, (WidgetsBinding.instance.window.physicalSize.height/1000)*90)),
-        side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black12)),
+        side: MaterialStateProperty.resolveWith<BorderSide>((states) => const BorderSide(color: Colors.black12)),
         shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
           return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
         }),
