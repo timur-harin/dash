@@ -23,7 +23,7 @@ class DashBoardApp extends StatelessWidget {
     return MaterialApp(
       theme: commonTheme(),
       debugShowCheckedModeBanner: false,
-      home: const MainPage(title: 'Цифровая модель управления энергетической гибкостью'),
+      home: const MainPage(title: 'Цифровая модель управления энергетической гибкостью в с. Новиково'),
     );
   }
 }
