@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 ThemeData commonTheme() => ThemeData(
     textTheme: const TextTheme(
-      headline6: TextStyle(fontFamily: fontNameBold, fontSize: 24, color: textColor, fontWeight: FontWeight.w800),
-      headline4: TextStyle(fontFamily: fontNameBold, fontSize: mediumTextSize, fontWeight: FontWeight.w600, color: textColor),
-      bodyText1: TextStyle(fontFamily: fontNameLight, fontSize: 24, color: textColor, fontWeight: FontWeight.w500),
-      bodyText2: TextStyle(fontFamily: fontNameLight, fontSize: 16, color: textColor, fontWeight: FontWeight.w500),
-      subtitle1: TextStyle(fontFamily: fontNameLight, fontSize: 14, color: textColor, fontWeight: FontWeight.w500),
+      displayLarge: TextStyle(fontFamily: fontNameBold, fontSize: 24, color: textColor, fontWeight: FontWeight.w800),
+      displayMedium: TextStyle(fontFamily: fontNameBold, fontSize: mediumTextSize, fontWeight: FontWeight.w600, color: textColor),
+      headlineLarge: TextStyle(fontFamily: fontNameLight, fontSize: 24, color: textColor, fontWeight: FontWeight.w500),
+      headlineMedium: TextStyle(fontFamily: fontNameLight, fontSize: 16, color: textColor, fontWeight: FontWeight.w500),
+      headlineSmall: TextStyle(fontFamily: fontNameLight, fontSize: 14, color: textColor, fontWeight: FontWeight.w500),
     ),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(

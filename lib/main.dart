@@ -123,7 +123,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text("Спрос на мощность (кВт)", style: Theme.of(context).textTheme.headline6),
+                          Text("Спрос на мощность (кВт)", style: Theme.of(context).textTheme.displayLarge),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                             child: SizedBox(
@@ -147,7 +147,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                               ),
                             ),
                           ),
-                          Text("Критерии оптимизации", style: Theme.of(context).textTheme.headline6),
+                          Text("Критерии оптимизации", style: Theme.of(context).textTheme.displayLarge),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -169,7 +169,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                           ));
                                     },
                                     style: commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => yellowButton)),
-                                    child: Text("Экономичность", style: Theme.of(context).textTheme.headline4),
+                                    child: Text("Экономичность", style: Theme.of(context).textTheme.displayMedium),
                                   ),
                                 ),
                               ),
@@ -190,7 +190,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                               ));
                                         },
                                         style: commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => blueButton)),
-                                        child: Text("Надежность", style: Theme.of(context).textTheme.headline4))),
+                                        child: Text("Надежность", style: Theme.of(context).textTheme.displayMedium))),
                               ),
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(10, 20, 15, 25),
@@ -213,7 +213,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                         },
                                         style:
                                             commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => greenButton)),
-                                        child: Text("Безуглеродность", style: Theme.of(context).textTheme.headline4))),
+                                        child: Text("Безуглеродность", style: Theme.of(context).textTheme.displayMedium))),
                               ),
                             ],
                           )
@@ -231,7 +231,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Сравнительный анализ:", style: Theme.of(context).textTheme.headline6),
+                      Text("Сравнительный анализ:", style: Theme.of(context).textTheme.displayLarge),
                       Row(children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 20, 10, 20),
@@ -266,25 +266,25 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[0]),
-                                      Flexible(child: Text("Строительство сети", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
+                                      Flexible(child: Text("Строительство сети", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[1]),
-                                      Flexible(child: Text("Установка литий-ионного накопителя", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
+                                      Flexible(child: Text("Установка литий-ионного накопителя", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[2]),
-                                      Flexible(child: Text("Переход на электроотопление", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
+                                      Flexible(child: Text("Переход на электроотопление", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                   Row(
                                     children: [
                                       Icon(Icons.horizontal_rule_outlined, color: customColors[3]),
-                                      Flexible(child: Text("Установка водородного накопителя", style: Theme.of(context).textTheme.bodyText2, textAlign: TextAlign.left)),
+                                      Flexible(child: Text("Установка водородного накопителя", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
                                     ],
                                   ),
                                 ],
@@ -347,7 +347,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                         right: BorderSide(width: 5, color: Colors.white),
                                         bottom: BorderSide(width: 5, color: Colors.white))),
                                 child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <Widget>[
-                                  Text(confNames[index], style: Theme.of(context).textTheme.headline6, textAlign: TextAlign.left),
+                                  Text(confNames[index], style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.left),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
@@ -361,12 +361,12 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/lep.svg", width: 16, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" Сеть", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" Сеть", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               TextButton(
                                                 onPressed: () {},
-                                                child: Text(configuration[index][0].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                child: Text(configuration[index][0].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                               )
                                             ],
                                           ),
@@ -382,19 +382,19 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/dyzel.svg", width: 42, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" ДГУ", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" ДГУ", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               Row(
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][1].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][1].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][2].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][2].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               ),
@@ -402,12 +402,12 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][3].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][3].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][4].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][4].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               )
@@ -425,19 +425,19 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/wind.svg", width: 23, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" ВЭУ", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" ВЭУ", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               Row(
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][5].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][5].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][6].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][6].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               ),
@@ -445,12 +445,12 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][7].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][7].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][8].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][8].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               )
@@ -468,18 +468,18 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/battery.svg", width: 15, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" CНЭ", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" CНЭ", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               Column(
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][9].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][9].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][10].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][10].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               )
@@ -497,18 +497,18 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/thermal.svg", width: 38, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" ТА", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" ТА", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               Column(
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][11].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][11].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][12].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][12].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               )
@@ -526,18 +526,18 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: [
                                                   SvgPicture.asset("assets/icons/hydrogen.svg", width: 15, height: 30, fit: BoxFit.scaleDown),
-                                                  Text(" ТЭ", style: Theme.of(context).textTheme.subtitle1)
+                                                  Text(" ТЭ", style: Theme.of(context).textTheme.headlineSmall)
                                                 ],
                                               ),
                                               Column(
                                                 children: [
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][13].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][13].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {},
-                                                    child: Text(configuration[index][14].toString(), style: Theme.of(context).textTheme.bodyText2),
+                                                    child: Text(configuration[index][14].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                   ),
                                                 ],
                                               )
