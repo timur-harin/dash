@@ -579,7 +579,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                           width: width / 1920 * 70,
                                                           child: TextButton(
                                                             onPressed: () {},
-                                                            child: Text(conf[index][_index][9].toString(), style: Theme.of(context).textTheme.headlineMedium),
+                                                            child: Text(conf[index][_index][9] >=1000 ? "${conf[index][_index][9]~/1000}k" :  conf[index][_index][9].toString()  , style: Theme.of(context).textTheme.headlineMedium),
                                                           ),
                                                         ),
                                                         SizedBox(
@@ -587,7 +587,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                           width: width / 1920 * 70,
                                                           child: TextButton(
                                                             onPressed: () {},
-                                                            child: Text(conf[index][_index][10].toString(), style: Theme.of(context).textTheme.headlineMedium),
+                                                            child: Text(conf[index][_index][10] >=1000 ? "${conf[index][_index][10]~/1000}k" :  conf[index][_index][10].toString(), style: Theme.of(context).textTheme.headlineMedium),
                                                           ),
                                                         ),
                                                       ],
