@@ -432,30 +432,33 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                           SizedBox(
                                             height: height / 1000 * 100,
                                             width: width / 1920 * 135,
-                                            child: Center(
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      SvgPicture.asset("assets/icons/wind.svg", width: 23, height: 30, fit: BoxFit.scaleDown),
-                                                      Text(" ВЭУ", style: Theme.of(context).textTheme.headlineSmall)
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      TextButton(
-                                                        onPressed: () {},
-                                                        child: Text(conf[index][_index][3].toString(), style: Theme.of(context).textTheme.headlineMedium),
-                                                      ),
-                                                      const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
-                                                      TextButton(
-                                                        onPressed: () {},
-                                                        child: Text(conf[index][_index][4].toString(), style: Theme.of(context).textTheme.headlineMedium),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                            child: FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Center(
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        SvgPicture.asset("assets/icons/wind.svg", width: 23, height: 30, fit: BoxFit.scaleDown),
+                                                        Text(" ВЭУ", style: Theme.of(context).textTheme.headlineSmall)
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        TextButton(
+                                                          onPressed: () {},
+                                                          child: Text(conf[index][_index][3].toString(), style: Theme.of(context).textTheme.headlineMedium),
+                                                        ),
+                                                        const Text("X", style: TextStyle(fontWeight: FontWeight.w600)),
+                                                        TextButton(
+                                                          onPressed: () {},
+                                                          child: Text(conf[index][_index][4].toString(), style: Theme.of(context).textTheme.headlineMedium),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
