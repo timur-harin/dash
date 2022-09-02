@@ -1,6 +1,5 @@
-import 'package:dash/common.dart';
-
 import 'package:flutter/material.dart';
+import 'package:dash/data.dart';
 
 ThemeData commonTheme() => ThemeData(
     textTheme: const TextTheme(
@@ -12,9 +11,6 @@ ThemeData commonTheme() => ThemeData(
     ),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
-      // padding: MaterialStateProperty.resolveWith<EdgeInsets>((states) => EdgeInsets.fromLTRB(5,10,5,5)),
-      // minimumSize: MaterialStateProperty.resolveWith<Size>(
-      //     (states) => Size(WidgetsBinding.instance.window.physicalSize.width * 0.02, WidgetsBinding.instance.window.physicalSize.height * 0.02)),
       backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.white),
       side: MaterialStateProperty.resolveWith<BorderSide>((states) => const BorderSide(color: Colors.black12)),
       shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
@@ -42,16 +38,6 @@ ThemeData commonTheme() => ThemeData(
         }),
       ),
     ),
-    // iconButtonTheme: IconButtonThemeData(
-    //   style: ButtonStyle(
-    //     // minimumSize: MaterialStateProperty.resolveWith<Size>(
-    //     //     (states) => Size((WidgetsBinding.instance.window.physicalSize.width/1920)*370, (WidgetsBinding.instance.window.physicalSize.height/1000)*90)),
-    //     side: MaterialStateProperty.resolveWith<BorderSide>((states) => BorderSide(color: Colors.black12)),
-    //     shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
-    //       return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
-    //     }),
-    //   ),
-    // ),
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         titleTextStyle: TextStyle(
@@ -59,7 +45,4 @@ ThemeData commonTheme() => ThemeData(
           fontSize: 36,
           fontWeight: FontWeight.w800,
           color: textColor,
-        ))
-    // cardColor: Colors.orange.shade100,
-    // scaffoldBackgroundColor: Colors.yellow,
-    );
+        )));
