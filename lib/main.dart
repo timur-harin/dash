@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'dart:ui';
+import 'package:dash/hero.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dash/data.dart';
@@ -44,6 +45,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   var size = window.physicalSize;
   var height = WidgetsBinding.instance.window.physicalSize.height;
   var width = WidgetsBinding.instance.window.physicalSize.width;
+  var tapIndex = 0;
 
   late List<List<TableData>> _chartData;
   late TooltipBehavior _tooltipBehavior;
@@ -115,8 +117,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
           elevation: 0,
           toolbarHeight: heightAppBar,
           centerTitle: true,
-          title: FittedBox(
-          fit: BoxFit.fitWidth,child: Text(widget.title)),
+          title: FittedBox(fit: BoxFit.fitWidth, child: Text(widget.title)),
         ),
         body: Center(
             child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -129,7 +130,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                   height: height * 0.287,
                   width: width * 0.633,
                   child: FittedBox(
-                      fit: BoxFit.scaleDown,
+                    fit: BoxFit.scaleDown,
                     child: Container(
                       decoration: const BoxDecoration(border: Border(left: BorderSide(width: 20, color: Colors.white), right: BorderSide(width: 5, color: Colors.white))),
                       child: Center(
@@ -208,7 +209,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                       _opacity = 1;
                                                     }));
                                           },
-                                          style: commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => blueButton)),
+                                          style:
+                                              commonTheme().elevatedButtonTheme.style!.copyWith(backgroundColor: MaterialStateProperty.resolveWith<Color>((states) => blueButton)),
                                           child: Text("Надежность", style: Theme.of(context).textTheme.displayMedium))),
                                 ),
                                 Padding(
@@ -248,7 +250,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                 height: height * 0.287,
                 width: width * 0.367,
                 child: FittedBox(
-                    fit: BoxFit.scaleDown,
+                  fit: BoxFit.scaleDown,
                   child: Container(
                     decoration: const BoxDecoration(border: Border(left: BorderSide(width: 5, color: Colors.white), right: BorderSide(width: 20, color: Colors.white))),
                     child: Column(
@@ -270,7 +272,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                   sides: 3,
                                   graphColors: const [Colors.black54, Colors.blueAccent, Colors.orange, Colors.green],
                                   // outlineColor: Colors.black,
-
                                 ),
                               ),
                             ),
@@ -298,7 +299,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                       Row(
                                         children: [
                                           Icon(Icons.horizontal_rule_outlined, color: customColors[1]),
-                                    Flexible(child: Text("Установка литий-ионного накопителя", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
+                                          Flexible(child: Text("Установка литий-ионного накопителя", style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.left)),
                                         ],
                                       ),
                                       Row(
@@ -363,7 +364,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                           height: height * 0.175,
                           width: width,
                           child: FittedBox(
-                              fit: BoxFit.scaleDown,
+                            fit: BoxFit.scaleDown,
                             child: Container(
                               color: menuColors[index],
                               child: Row(
@@ -379,8 +380,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                               right: BorderSide(width: 5, color: Colors.white),
                                               bottom: BorderSide(width: 5, color: Colors.white))),
                                       child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <Widget>[
-                                      FittedBox(
-                                      fit: BoxFit.fitHeight,child: Text(confNames[index], style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.left)),
+                                        FittedBox(fit: BoxFit.fitHeight, child: Text(confNames[index], style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.left)),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: <Widget>[
@@ -393,7 +393,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/lep.svg", width: width/1920*16, height: height/1000*30, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/lep.svg", width: width / 1920 * 16, height: height / 1000 * 30, fit: BoxFit.scaleDown),
                                                         Text(" Сеть", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -418,7 +418,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/dyzel.svg", width: width/1920*40, height: height/1000*28, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/dyzel.svg", width: width / 1920 * 40, height: height / 1000 * 28, fit: BoxFit.scaleDown),
                                                         Text(" ДГУ", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -456,7 +456,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/wind.svg", width: width/1920*23, height: height/1000*30, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/wind.svg", width: width / 1920 * 23, height: height / 1000 * 30, fit: BoxFit.scaleDown),
                                                         Text(" ВЭУ", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -494,7 +494,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/battery.svg", width: width/1920*15, height: height/1000*30, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/battery.svg", width: width / 1920 * 15, height: height / 1000 * 30, fit: BoxFit.scaleDown),
                                                         Text(" CНЭ", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -531,7 +531,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/thermal.svg", width: width/1920*38, height: height/1000*30, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/thermal.svg", width: width / 1920 * 38, height: height / 1000 * 30, fit: BoxFit.scaleDown),
                                                         Text(" ТА", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -568,7 +568,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                     Row(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        SvgPicture.asset("assets/icons/hydrogen.svg", width: width/1920*15, height: height/1000*30, fit: BoxFit.scaleDown),
+                                                        SvgPicture.asset("assets/icons/hydrogen.svg", width: width / 1920 * 15, height: height / 1000 * 30, fit: BoxFit.scaleDown),
                                                         Text(" ТЭ", style: Theme.of(context).textTheme.headlineSmall)
                                                       ],
                                                     ),
@@ -579,7 +579,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                           width: width / 1920 * 70,
                                                           child: TextButton(
                                                             onPressed: () {},
-                                                            child: Text(conf[index][_index][9] >=1000 ? "${conf[index][_index][9]~/1000}k" :  conf[index][_index][9].toString()  , style: Theme.of(context).textTheme.headlineMedium),
+                                                            child: Text(conf[index][_index][9] >= 1000 ? "${conf[index][_index][9] ~/ 1000}k" : conf[index][_index][9].toString(),
+                                                                style: Theme.of(context).textTheme.headlineMedium),
                                                           ),
                                                         ),
                                                         SizedBox(
@@ -587,7 +588,9 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                           width: width / 1920 * 70,
                                                           child: TextButton(
                                                             onPressed: () {},
-                                                            child: Text(conf[index][_index][10] >=1000 ? "${conf[index][_index][10]~/1000}k" :  conf[index][_index][10].toString(), style: Theme.of(context).textTheme.headlineMedium),
+                                                            child: Text(
+                                                                conf[index][_index][10] >= 1000 ? "${conf[index][_index][10] ~/ 1000}k" : conf[index][_index][10].toString(),
+                                                                style: Theme.of(context).textTheme.headlineMedium),
                                                           ),
                                                         ),
                                                       ],
@@ -612,67 +615,85 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                                 top: BorderSide(width: 10, color: Colors.white),
                                                 right: BorderSide(width: 20, color: Colors.white),
                                                 bottom: BorderSide(width: 5, color: Colors.white))),
-                                        child: SfCartesianChart(
-                                          palette: const [Color.fromRGBO(75,134,185,1), Colors.grey, greenButton, Colors.pinkAccent,Colors.lightBlueAccent,Color.fromRGBO(168, 50, 48, 1)],
-                                          legend: Legend(isVisible: true, orientation: LegendItemOrientation.horizontal, position: LegendPosition.top),
-                                          tooltipBehavior: _tooltipBehavior,
-                                          series: <ChartSeries>[
-                                            StackedAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.grid,
-                                              name: 'Сеть',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            tapIndex = index;
+                                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                              return HeroPage(tapIndex: tapIndex, data: _chartData, title: 'Цифровая модель управления энергетической гибкостью в с. Новиково');
+                                            }));
+                                          },
+                                          child: Hero(
+                                            tag: 'imageHero',
+                                            child: SfCartesianChart(
+                                              palette: const [
+                                                Color.fromRGBO(75, 134, 185, 1),
+                                                Colors.grey,
+                                                greenButton,
+                                                Colors.pinkAccent,
+                                                Colors.lightBlueAccent,
+                                                Color.fromRGBO(168, 50, 48, 1)
+                                              ],
+                                              legend: Legend(isVisible: true, orientation: LegendItemOrientation.horizontal, position: LegendPosition.top),
+                                              tooltipBehavior: _tooltipBehavior,
+                                              series: <ChartSeries>[
+                                                StackedAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.grid,
+                                                  name: 'Сеть',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                                StackedAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.diesel,
+                                                  name: 'Дизель-генераторы',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                                StackedAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.wind,
+                                                  name: 'Ветрогенераторы',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                                StackedAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.ess,
+                                                  name: 'Накопитель',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                                StackedAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.hydrogen,
+                                                  name: 'Водород',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                                SplineAreaSeries<TableData, String>(
+                                                  dataSource: _chartData[index],
+                                                  xValueMapper: (TableData exp, _) => exp.time,
+                                                  yValueMapper: (TableData exp, _) => exp.thermal,
+                                                  name: 'Теплонакопитель',
+                                                  // markerSettings: MarkerSettings(
+                                                  //   isVisible: true,
+                                                  // )
+                                                ),
+                                              ],
+                                              primaryXAxis: CategoryAxis(),
                                             ),
-                                            StackedAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.diesel,
-                                              name: 'Дизель-генераторы',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
-                                            ),
-                                            StackedAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.wind,
-                                              name: 'Ветрогенераторы',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
-                                            ),
-                                            StackedAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.ess,
-                                              name: 'Накопитель',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
-                                            ),
-                                            StackedAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.hydrogen,
-                                              name: 'Водород',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
-                                            ),
-                                            SplineAreaSeries<TableData, String>(
-                                              dataSource: _chartData[index],
-                                              xValueMapper: (TableData exp, _) => exp.time,
-                                              yValueMapper: (TableData exp, _) => exp.thermal,
-                                              name: 'Теплонакопитель',
-                                              // markerSettings: MarkerSettings(
-                                              //   isVisible: true,
-                                              // )
-                                            ),
-                                          ],
-                                          primaryXAxis: CategoryAxis(),
+                                          ),
                                         ),
                                       ))
                                 ],
