@@ -54,18 +54,18 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
 
   @override
   void initState() {
-    _chartData = getChartData(_index);
+    _chartData = getChartData(_index, items);
     _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
 
-  List<List<TableData>> getChartData(int index) {
+  List<List<TableData>> getChartData(int index, List<int> indexes) {
     List<List<TableData>> chartData = [];
-    for (var iconf = 0; iconf < 4; iconf++) {
+    for (var iconf = 0; iconf < indexes.length; iconf++) {
       List<TableData> table = [];
       for (var i = 0; i < 24; i++) {
-        TableData f = TableData("${i + 1}:00", dataT[iconf][index][0][i], dataT[iconf][index][1][i], dataT[iconf][index][2][i], dataT[iconf][index][3][i],
-            dataT[iconf][index][4][i], dataT[iconf][index][5][i]);
+        TableData f = TableData("${i + 1}:00", dataT[indexes[iconf]][index][0][i], dataT[indexes[iconf]][index][1][i], dataT[indexes[iconf]][index][2][i],
+            dataT[indexes[iconf]][index][3][i], dataT[indexes[iconf]][index][4][i], dataT[indexes[iconf]][index][5][i]);
         table.add(f);
       }
       chartData.add(table);
@@ -101,7 +101,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     conf = [gConf, sConf, tConf, hConf];
     menuColors = [greyMenu, blueMenu, orangeMenu, azureMenu];
     confNames = [confElectro, confBattery, confBoiled, congHydro];
-    _chartData = getChartData(_index);
+    _chartData = getChartData(_index, items);
   }
 
   @override
@@ -157,7 +157,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                                     setState(() {
                                       _value = value;
                                       _index = (_value ~/ 100) - 1;
-                                      _chartData = getChartData(_index);
+                                      _chartData = getChartData(_index, items);
                                     });
                                   },
                                 ),
