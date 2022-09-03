@@ -265,11 +265,15 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                               width: width / 1920 * 300,
                               child: Center(
                                 child: RadarChart(
+                                  ticksTextStyle: const TextStyle(color: Colors.white, fontSize: 12),
+                                  featuresTextStyle: const TextStyle(color: Colors.black, fontSize: 16),
                                   ticks: ticks,
                                   features: features,
                                   data: data[_index],
                                   reverseAxis: false,
+                                  outlineColor: Colors.transparent,
                                   sides: 3,
+                                  axisColor: Colors.transparent,
                                   graphColors: const [Colors.black54, Colors.blueAccent, Colors.orange, Colors.green],
                                   // outlineColor: Colors.black,
                                 ),
