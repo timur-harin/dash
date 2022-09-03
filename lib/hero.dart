@@ -35,17 +35,14 @@ class _HeroPageState extends State<HeroPage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: const Icon(Icons.arrow_back_outlined, size: 40, color: Colors.black,), onPressed: () {  Navigator.pop(context); }),
         actions: [SizedBox(height: 60, child: Image.asset("assets/icons/rushydro.jpeg"))],
         elevation: 0,
         toolbarHeight: heightAppBar,
         centerTitle: true,
         title: FittedBox(fit: BoxFit.fitWidth, child: Text(widget.title)),
       ),
-      body: GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Center(
+      body: Center(
           child: Hero(
             tag: 'imageHero',
             child: SfCartesianChart(
@@ -122,7 +119,6 @@ class _HeroPageState extends State<HeroPage> {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
