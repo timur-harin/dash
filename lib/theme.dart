@@ -8,6 +8,7 @@ ThemeData commonTheme() => ThemeData(
       headlineLarge: TextStyle(fontFamily: fontNameLight, fontSize: 24, color: textColor, fontWeight: FontWeight.w500),
       headlineMedium: TextStyle(fontFamily: fontNameLight, fontSize: 16, color: textColor, fontWeight: FontWeight.w500),
       headlineSmall: TextStyle(fontFamily: fontNameLight, fontSize: 14, color: textColor, fontWeight: FontWeight.w500),
+      titleLarge: TextStyle(fontFamily: fontNameBold, fontSize: 48, color: textColor, fontWeight: FontWeight.w800),
     ),
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
