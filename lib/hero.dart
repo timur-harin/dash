@@ -86,7 +86,7 @@ class _HeroPageState extends State<HeroPage> {
               Color.fromRGBO(152, 234, 229, 1)
               ],
               legend: Legend(
-                  isVisible: true, orientation: LegendItemOrientation.horizontal, position: LegendPosition.top, textStyle: const TextStyle(fontSize: 8)),
+                  isVisible: true, orientation: LegendItemOrientation.horizontal, position: LegendPosition.top, textStyle: const TextStyle(fontSize: 16)),
               tooltipBehavior: _tooltipBehavior,
               series: <ChartSeries>[
                 StackedAreaSeries<TableData, String>(
