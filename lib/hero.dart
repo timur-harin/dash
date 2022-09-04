@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dash/data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+// ignore: must_be_immutable
 class HeroPage extends StatefulWidget {
   int tapIndex;
   List<List<TableData>> data;
@@ -73,76 +74,105 @@ class _HeroPageState extends State<HeroPage> {
               child: Hero(
                 tag: 'imageHero',
                 child: SfCartesianChart(
-                  palette: const [Color.fromRGBO(75, 134, 185, 1), Colors.grey, greenButton, Colors.pinkAccent, Colors.lightBlueAccent, Color.fromRGBO(168, 50, 48, 1)],
-                  legend: Legend(
-                      isVisible: true,
-                      orientation: LegendItemOrientation.horizontal,
-                      position: LegendPosition.top,
-                      height: '50%',
-                      width: '70%',
-                      iconHeight: height / 1000 * 40,
-                      iconWidth: width / 1920 * 40,
-                      textStyle: Theme.of(context).textTheme.displayMedium),
-                  tooltipBehavior: _tooltipBehavior,
-                  series: <ChartSeries>[
-                    StackedAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.grid,
-                      name: 'Сеть',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                    StackedAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.diesel,
-                      name: 'Дизель-генераторы',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                    StackedAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.wind,
-                      name: 'Ветрогенераторы',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                    StackedAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.ess,
-                      name: 'Накопитель',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                    StackedAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.hydrogen,
-                      name: 'Водород',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                    SplineAreaSeries<TableData, String>(
-                      dataSource: widget.data.elementAt(widget.tapIndex),
-                      xValueMapper: (TableData exp, _) => exp.time,
-                      yValueMapper: (TableData exp, _) => exp.thermal,
-                      name: 'Теплонакопитель',
-                      // markerSettings: MarkerSettings(
-                      //   isVisible: true,
-                      // )
-                    ),
-                  ],
-                  primaryXAxis: CategoryAxis(labelStyle: Theme.of(context).textTheme.displayMedium),
-                  primaryYAxis: CategoryAxis(labelStyle: Theme.of(context).textTheme.displayMedium),
+              palette: const [
+              Color.fromRGBO(109, 109, 109, 1),
+              Color.fromRGBO(252, 239, 122, 1),
+              Color.fromRGBO(135, 221, 121, 1),
+              Color.fromRGBO(44, 83, 160, 1),
+              Color.fromRGBO(44, 83, 160, 1),
+              Color.fromRGBO(249, 148, 147, 1),
+              Color.fromRGBO(249, 148, 147, 1),
+              Color.fromRGBO(152, 234, 229, 1),
+              Color.fromRGBO(152, 234, 229, 1)
+              ],
+              legend: Legend(
+                  isVisible: true, orientation: LegendItemOrientation.horizontal, position: LegendPosition.top, textStyle: const TextStyle(fontSize: 8)),
+              tooltipBehavior: _tooltipBehavior,
+              series: <ChartSeries>[
+                StackedAreaSeries<TableData, String>(
+                  dataSource: widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.grid,
+                  name: 'Сеть',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
                 ),
+                StackedAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.diesel,
+                  name: 'Дизель-генераторы',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                StackedAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.wind,
+                  name: 'Ветрогенераторы',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                SplineAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.ess_,
+                  name: 'Накопитель(зарядка)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                StackedAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.ess,
+                  name: 'Накопитель(выдача)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                SplineAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.thermal_,
+                  name: 'Теплонакопитель(зарядка)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                StackedAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.thermal,
+                  name: 'Теплонакопитель(выдача)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                SplineAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.hydrogen_,
+                  name: 'Водород(накопление)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+                StackedAreaSeries<TableData, String>(
+                  dataSource:  widget.data.elementAt(widget.tapIndex),
+                  xValueMapper: (TableData exp, _) => exp.time,
+                  yValueMapper: (TableData exp, _) => exp.hydrogen,
+                  name: 'Водород(выдача)',
+                  // markerSettings: MarkerSettings(
+                  //   isVisible: true,
+                  // )
+                ),
+              ],
+              primaryXAxis: CategoryAxis(),
+            ),
               ),
             ),
           ],
