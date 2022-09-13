@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dash/data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-// ignore: must_be_immutable
+
 class HeroPage extends StatefulWidget {
   int tapIndex;
   List<List<TableData>> data;
