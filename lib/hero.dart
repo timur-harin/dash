@@ -9,6 +9,7 @@ class HeroPage extends StatefulWidget {
   List<List<TableData>> data;
   String title;
 
+
   HeroPage({super.key, required this.tapIndex, required this.data, required this.title});
 
   @override
